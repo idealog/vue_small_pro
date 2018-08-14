@@ -1,0 +1,57 @@
+/*播放器 进度控制条  部分的样式*/
+.pro .point {
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    background-color: #fff;
+    border: 1px solid #b4b4b4;
+    position: relative;
+    top: -2px;
+    margin-left: -3px; 
+}
+.playing {
+    height: 2rem;
+}
+.playing th {
+    font-size: 1.5rem;
+    color: #999;
+    font-weight: normal;
+}
+.playing #curt, .playing #curp {
+    display: table-cell;
+}
+.playing #curt {
+    padding-right: 1.3rem;
+}
+.playing #totl {
+    padding-left: 1rem;
+}
+#curt, #curp {
+    display: none;
+}
+.pro {
+    height: 18px;
+    float: left;
+    width: 100%;
+    padding-left:6px;
+}
+.pro_play {
+    height: 2px;
+    background: #e5e5e5;
+    position: relative;
+    top: 8px;
+}
+.pro_play p {
+    height: 2px;
+    background-color: #a3a3a3;
+    width: 0;
+}
+.pro .point {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #b4b4b4;
+    position: relative;
+    top: -2px;
+}
