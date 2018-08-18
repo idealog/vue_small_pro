@@ -19,7 +19,7 @@
 			<div :slot="select_birth" class="option" @click.stop="showPop('SetBabyBirth')"> {{birth}} </div>
 		</LineItem>	
 		<!--底部弹出层组件-->
-		<Pop :show_pop_ctrl="show_pop_ctrl" :slot_business_component="slot_business_component" :pop_pannel_height="pop_pannel_height">
+		<Pop :show_pop_ctrl="show_pop_ctrl" :slot_business_component="slot_business_component" :show_pop_down_transition="show_pop_down_transition" :pop_pannel_height="pop_pannel_height">
 			<div :slot="slot_business_component">
 				<component :is="slot_business_component" @setBabySexPanel="setBabySexPanel"
 				@setBabyBirthPanel="setBabyBirthPanel"
@@ -28,7 +28,7 @@
 				</component>
 			</div>
 		</Pop>
-		<div class="save_btn">
+		<div class="save_btn" @click.stop="saveBabyInfo">
 			<span>{{save_txt}}</span>
 		</div>
 	</div>
@@ -68,12 +68,11 @@
 				slot_business_component:'',
 				pop_pannel_height:'30rem',
 				save_txt:'保存',
-
 				select_babysex:'select_babysex',
 				sex:'未知',
 				birth:'2018-08-14',
-
-				select_birth: 'select_birth'
+				select_birth: 'select_birth',
+				show_pop_down_transition:false
 			}
 		},
 
@@ -112,10 +111,10 @@
 				this.slot_business_component = slot_business_component
 			},
 			setBabySexPanel(show){
-				this.show_pop_ctrl = show
+				this.setHideTransition()
 			},
 			setBabyBirthPanel(show){
-				this.show_pop_ctrl = show
+				this.setHideTransition()
 			},
 			setBabyAvatar(){
 				console.log('go babyhead')
@@ -123,11 +122,28 @@
 			},
 			setSex(val){
 				this.sex =  val
-				this.show_pop_ctrl = false
+				this.setHideTransition()
 			},
 			setBirth(val){
 				this.birth = val
-				this.show_pop_ctrl = false
+				this.setHideTransition()
+			},
+			saveBabyInfo(){
+				/*const param = {
+					birth,
+					head_img,
+					nickname,
+					sex
+				} = this*/
+				//todo 发送请求 保存宝宝信息
+			},
+			setHideTransition(){
+				const vm = this
+				vm.show_pop_down_transition = true
+				setTimeout(function(){
+					vm.show_pop_down_transition = false
+					vm.show_pop_ctrl = false
+				},300)
 			}
 		},
 

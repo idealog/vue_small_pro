@@ -2,13 +2,13 @@
 <template>
 	<div class="wrap" @click.stop="itemClick($event)">
 		<div class="inline-item" >
-			<img :src="left_icon" class="small bottom_half"/>
+			<img :src="left_icon" class="small bottom_half" v-bind:style="{width:left_icon_width}" v-show="!hideLeftIcon"/>
 			<span class="attr">{{attr_name}}</span>
 		</div>
 		<div class="inline-item right" >
 			<div @click.stop="emitClick($event)">
 				<slot :name="slot_business_component" ></slot>
-				<img :src="right_icon" class="small" @click.stop="emitChangeIcon($event)"/>
+				<img :src="right_icon" v-bind:style="{width:right_icon_width}" class="small" @click.stop="emitChangeIcon($event)"/>
 			</div>
 		</div>
 		<div style="clear:both"></div>
@@ -16,13 +16,12 @@
 </template>
 <script>
 	export default {
-		props:['left_icon','right_icon','attr_name','slot_business_component'],
+		props:['left_icon','right_icon','attr_name','slot_business_component','left_icon_width','right_icon_width','hideLeftIcon'],
 		data(){
 			return {
 
 			}
 		},
-
 		methods:{
 			emitClick(e){
 				console.log('emitClick')

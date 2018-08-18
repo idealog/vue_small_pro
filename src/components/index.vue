@@ -4,21 +4,22 @@
 		<Category></Category>
 		
 		<Loading :show="loading"></Loading>
+		<MiniPlayer></MiniPlayer>
 	</div>
 </template>
 <script>
-import '@/assets/css/base_list.css'
-import '@/assets/css/basic.css'
-import Banner from './banner/Banner_img'
+import Banner from '@/components/banner/Banner'
 import Search from './search/Search'
 import Category from './content/category/Category'
 import Loading from '@/components/loading/Loading'
+import MiniPlayer from '@/components/common/propellingplayer/Player'
 	export default {
 		components: {
-			Banner,
+			/*Banner,*/
 			Search,
 			Category,
-			Loading
+			Loading,
+			MiniPlayer
 		},
 		data() {
 			return {

@@ -1,8 +1,8 @@
 <template>
 	<div class="wrap">
 		<h3 class="title">
-			<span class="tag" @click.stop="hidePop($event)">{{cancel_txt}}</span>
-			<span class='finish_tip' @click.stop="hidePop($event)">{{finish_tip}}</span>
+			<span class="tag" @click.stop="hidePop()">{{cancel_txt}}</span>
+			<span class='finish_tip' @click.stop="hidePop('finish')">{{finish_tip}}</span>
 		</h3>
 		<!--选择属性-->
 		<div>
@@ -63,10 +63,10 @@
 		height: 25rem;
 		overflow: scroll;
 	}
-	.wrap{
-		position: relative;
-		margin: 1.25rem 0;
-		width: 100%;
-	}
+/* 	.wrap{
+	position: relative;
+	margin: 1.25rem 0;
+	width: 100%;
+} */
 
 </style>

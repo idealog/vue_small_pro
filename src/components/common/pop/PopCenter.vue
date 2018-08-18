@@ -10,7 +10,7 @@
 			</div>
 			<div class="flex_container">
 				<div class="flex_btn" @click.stop="hidePop" v-if="cancel_txt">{{cancel_txt}}</div>
-				<div class="flex_btn red" @click.stop="hidePop" v-if="finish_txt">{{finish_txt}}</div>
+				<div class="flex_btn red" @click.stop="hidePop('finish')" v-if="finish_txt">{{finish_txt}}</div>
 			</div>
 		</div>
 	</div>
@@ -24,8 +24,8 @@
 			}
 		},
 		methods:{
-			hidePop(){
-				this.$emit('hidePop')
+			hidePop(type){
+				this.$emit('hidePop',type)
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-const TEST_SERVER = 'http://xxx //'
+const TEST_SERVER = 'http://dev.cocheer.cn/cloud/cocheer' //内容服务
 export default {
 	getCategoryList:`${TEST_SERVER}/categories`,
 	getAlbumListByTag:`${TEST_SERVER}/cocheer_albums`,

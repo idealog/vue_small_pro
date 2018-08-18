@@ -1,7 +1,7 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
-var server_path= 'xxxx' //配置serverpath
-var port = xxxx //配置访问端口
+var server_path= 'xxx' //配置serverpath
+var port = 9632 //配置访问端口
 module.exports = {
   build: {
     env: require('./prod.env'),

@@ -5,7 +5,7 @@ export{
 	if(process.env.NODE_ENV === 'development'){
 		HOST = '/data_api' ;
 	}else{
-		HOST = '/xxx';
+		HOST = '/angry_birds';
 	};
 	url = `${HOST}${url}`
 	if(window.fetch){

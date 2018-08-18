@@ -104,8 +104,12 @@
 				</ul>
 			</div>
 		</section>
-		<PopCenter :show_pop_ctrl="show_pop_ctrl" :pop_title="pop_title" :cancel_txt="cancel_txt" :finish_txt="finish_txt" :slot_business_component = "slot_business_component" @hidePop="hidePop">
-			<div :slot="slot_business_component" class="progress_wrap">
+		<PopCenter :show_pop_ctrl="show_pop_ctrl" :pop_title="pop_title" :cancel_txt="cancel_txt" :finish_txt="finish_txt" :slot_business_component = "slot_business_component" @hidePop="hidePop" >
+
+			<div :slot="slot_business_component" class="progress_wrap" ref="progress_wrap">
+				<div class="left_icon">
+					<img :src="pop_icon" />
+				</div>
 				<!--添加progress组件-->
 				<component :is="slot_business_component"
 
@@ -119,9 +123,11 @@
 				@changeProgress="changeVolumeProgress"
 				@progressLoaded = "startComputeVolume"
 				ref="business_component"
-				>
-					
+				>	
 				</component>
+				<div class="right_icon">
+					<img :src="pop_icon" />
+				</div>
 			</div>
 		</PopCenter>
 	</div>
@@ -205,12 +211,19 @@
 				//音量部分进度条设置变量
 				volume_progress_offset_left:0,
 				volume_progress_percent:0,
-				volume_progress_width:'60vw',
+				volume_progress_width:'calc(100% - 4rem)',
 				volume_progress_height:'5px',
 				volume_progress_bar_width: '1rem',
 				volume_progress_bar_height: '1rem',
 				volume_progress:'volume_progress',
-				pop_title:''
+				pop_title:'',
+
+				pop_icon:'',
+
+
+				volume_icon:require('@/assets/img/volume.png'),
+
+				lamp_icon: require('@/assets/img/lamp.png')
 
 			}
 		},
@@ -226,11 +239,13 @@
 						this.pop_title = '设备亮度调节'
 						this.show_pop_ctrl = true
 						this.slot_business_component='Progress'
+						this.pop_icon = this.lamp_icon
 					}
 					if(item.title === '音量调节'){
 						this.pop_title = '设备音量调节'
 						this.show_pop_ctrl = true
 						this.slot_business_component='Progress'
+						this.pop_icon = this.volume_icon
 					}
 				}
 				
@@ -249,7 +264,8 @@
 				const vm  = this
 				//console.log(vm.$refs.business_component)
 				vm.getOffsetLeftValue('volume_progress_offset_left',vm.$refs.business_component._vnode.elm)
-				console.log(this.volume_progress_offset_left)
+				console.log(this.$refs.progress_wrap.clientWidth)
+				this.volume_progress_offset_left = this.volume_progress_offset_left -  this.$refs.progress_wrap.clientWidth /2
 				//vm.getOffsetLeftValue('volume_progress_offset_left',vm.$refs.business_component.$refs.volume_progress)
 			},
 			changeVolumeProgress(value){
@@ -367,8 +383,33 @@
 		margin-left:1rem;
 	}
 	.progress_wrap{
-		padding-left:1.5rem;
+		padding-left:3.6rem;
 		margin-top:2rem;
 		position:relative;
+	}
+	.left_icon{
+		position: absolute;
+    	left: 1rem;
+    	width: 2rem;
+    	height: 2rem;
+    	top: 50%;
+    	transform: translateY(-50%);
+	}
+
+	.left_icon img{
+		width:100%;
+	}
+
+	.right_icon{
+		position: absolute;
+    	right: 1rem;
+    	width: 3rem;
+    	height: 3rem;
+    	top: 50%;
+    	transform: translateY(-50%);
+	}
+
+	.right_icon img{
+		width: 100%;
 	}
 </style>

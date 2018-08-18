@@ -59,14 +59,5 @@
 		float:right;
 		color:red;
 	}
-	.container{
-		height: 25rem;
-		overflow: scroll;
-	}
-	.wrap{
-		position: relative;
-		margin: 1.25rem 0;
-		width: 100%;
-	}
 
 </style>

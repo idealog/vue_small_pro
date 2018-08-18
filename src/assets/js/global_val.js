@@ -1,5 +1,7 @@
 // 业务常量设置 写在这个文件中统一管理
-const xxx = 1
+
+const test_constant='123'
+
 export default {
-    xxx
+    test_constant
 }

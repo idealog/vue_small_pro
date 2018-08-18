@@ -14,6 +14,7 @@ let Routers =  new Router({
             return savedPosition
         } else {
             if (from.meta.keepAlive) {
+                console.log(from.meta.savedPosition)
                 from.meta.savedPosition = document.body.scrollTop;
             }
             return { x: 0, y: to.meta.savedPosition || 0 }
@@ -21,6 +22,7 @@ let Routers =  new Router({
   }
 })
 
+Routers.addRoutes(network)
 
 Routers.beforeEach((to, from, next) => {
   /* 路由发生变化修改页面title */

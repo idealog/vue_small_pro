@@ -1,9 +1,10 @@
 <template>
   <div id="app">
   	<!-- 显示全局右边的播放gif -->
-  	<div v-show="$store.state.show_small_player" class="top_right" @click.stop="goPlayer">
-		<img :src="play_gif" style="width:100%">
-  	</div> 
+  	<!-- <div v-show="$store.state.show_small_player" class="top_right" @click.stop="goPlayer">
+  			<span>{{$store.state.title}}</span>
+  			<img :src="play_gif">
+  	</div>  -->
     <transition name="router-fade" mode="out-in">
 		<keep-alive>
 		    <router-view v-if="$route.meta.keepAlive"></router-view>
@@ -37,12 +38,26 @@
 
 <style>
   .top_right{
-  	  position: absolute;
-  	  top: 1rem;
-  	  right: 1rem;
-  	  width: 2rem;
-  	  height: 2rem;
-  	  background: transparent;
+  	    position: relative;
+	    /* right: 1rem; */
+	    width: 100%;
+	    height: 2rem;
+	    background: transparent;
+	    height: 4rem;
+	    line-height: 4rem;
+	    text-align: center;
+	    font-size: 2.5rem;
+	    font-weight: bold;
+
+  }
+  .top_right img{
+  		position: absolute;
+	    float: right;
+	    width: 2rem;
+	    right: 1rem;
+	    display: inline-block;
+	    top:50%;
+	    transform: translateY(-50%);
   }
   .router-fade-enter-active, .router-fade-leave-active {
       transition: opacity .3s;

@@ -1,0 +1,46 @@
+.pop_up{
+	display: block;
+	animation:slideUp 300ms ease 100ms;
+	animation-fill-mode : forwards;
+}
+.pop_down{
+	animation:slideDown 300ms ease;
+	animation-fill-mode : forwards;
+}
+@keyframes slideUp{
+	from {bottom: -100%;}
+	to {bottom: 0;}
+}
+@-moz-keyframes slideUp{
+	from {bottom: -100%;}
+	to {bottom: 0;}
+}
+@-webkit-keyframes slideUp
+{
+	from {bottom: -100%;}
+	to {bottom: 0;}
+}
+@-o-keyframes slideUp{
+	from {bottom: -100%;}
+	to {bottom: 0;}
+}
+@keyframes slideDown
+{
+	from {bottom: 0;}
+	to {bottom: -100%;}
+}
+@-moz-keyframes slideDown
+{
+	from {bottom: 0;}
+	to {bottom: -100%;}
+}
+@-webkit-keyframes slideDown
+{
+	from {bottom: 0;}
+	to {bottom: -100%;}
+}
+@-o-keyframes slideDown
+{
+	from {bottom: 0;}
+	to {bottom: -100%;}
+}

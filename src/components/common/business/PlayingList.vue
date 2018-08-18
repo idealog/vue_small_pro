@@ -185,7 +185,7 @@
 		width: 100%;
 		font-size: 1.6rem;
 		text-align: center;
-		line-height: 4rem;
+		line-height: 5rem;
 		bottom:0;
 		background: rgba(245,245,245);
 	}

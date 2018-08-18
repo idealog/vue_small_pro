@@ -1,9 +1,9 @@
 <template>
 	<!--定义公共的弹出层插件-->
 	<div>
-		<div class="shadow" :class="{show_pop:show_pop_ctrl}">
-			<div :class="{disappear:show_transition_out}">
-				<div class="pop_ctrl_pannel" v-bind:style="{minHeight: pop_pannel_height}" :class="{slide_up:show_pop_ctrl,slide_down:!show_pop_ctrl}">
+		<div class="shadow" :class="{pop_up:show_pop_ctrl,shadow_out:show_pop_down_transition}">
+			<div>
+				<div class="pop_ctrl_pannel" v-bind:style="{minHeight: pop_pannel_height}" :class="{slide_up:show_pop_ctrl,slide_down:show_pop_down_transition}">
 					<slot :name="slot_business_component"></slot> <!--定义插入业务组件 动态插入-->
 				</div>
 			</div>
@@ -14,7 +14,7 @@
 	export default{
 		// business_component 组件名称 hide_pannel_class 需要控制显隐的弹出层元素class  hide_ele_class 点击完成需要隐藏的弹出层
 		// pop_pannel_height 设置弹出层最小高度 show_pop_ctrl 初始显示状态
-		props:['slot_business_component','pop_pannel_height','hide_pannel_class','hide_ele_class','show_pop_ctrl'],
+		props:['slot_business_component','pop_pannel_height','hide_pannel_class','hide_ele_class','show_pop_ctrl','show_pop_down_transition'],
 		data(){
 			return {
 				show_transition_out:false
@@ -22,9 +22,7 @@
 		},
 		watch:{
 			show_pop_ctrl(new_val,old_val){
-				if(new_val != old_val && !new_val){
-					//console.log('show disappear')
-				}
+
 			}
 		},
 		mounted(){
@@ -34,7 +32,7 @@
 </script>
 <style scoped>
 	.shadow{
-		z-index: 100;
+		z-index: 1001;
 	    height: 100%;
 	    width: 100%;
 	    display: none;
@@ -44,13 +42,22 @@
 	.disappear{
 		display: block;
 	}
-	.show_pop{
+	.pop_up{
 	    display: block;
-	    animation:pop_opacity_animation 300ms ease 100ms;
+	    animation:pop_opacity_animation 100ms ease 100ms;
+	    animation-fill-mode : forwards;
+	}
+	.pop_down{
+		animation:slideDown 100ms ease 100ms;
+	    animation-fill-mode : forwards;
+	}
+	.shadow_out{
+		animation:hide_opacity_animation 100ms ease;
 	    animation-fill-mode : forwards;
 	}
 	.pop_ctrl_pannel{
-		position: absolute;
+		position: fixed;
+		bottom: 0;
 		min-height: 30vh;
 		width: 100%;
 		background: white;
@@ -64,8 +71,12 @@
 		animation-fill-mode : forwards;
 	}
 	.slide_down{
-		animation:slideDown 1000ms ease 100ms;
+		animation:slideDown 300ms ease;
 		animation-fill-mode : forwards;
+	}
+
+	.shadow_out{
+
 	}
 
 	@keyframes slideUp
@@ -117,6 +128,8 @@
 
 
 
+
+
 	@keyframes slideDown
 	{
 		from {bottom: 0;}
@@ -140,8 +153,6 @@
 		from {bottom: 0;}
 		to {bottom: -100%;}
 	}
-
-
 
 
 </style>
